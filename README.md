@@ -25,6 +25,7 @@
 
 ## 개발 히스토리
 
+---
 ### API 응답 구조
 [API 응답 구조 설계 이슈](https://github.com/suhani93/product-api/issues/1)
 
@@ -52,3 +53,22 @@
 `message` 는 해당 에러에 대한 메세지
 `transactionId` 는 해당 응답값이 실패한 이유를 추적하기 위한 각각의 요청마다 가지고 있는 UUID
 
+---
+
+### API 공통 응답값
+
+**성공 공통 응답값**
+
+|상황|Status Code|Response Body `code`|
+|---|:---:|:---:|
+|정상 요청 성공|200|SUCCESS|
+
+**에러 공통 응답값**
+
+|상황|Status Code|Response Body `code`|Response Body `message`|
+|---|:---:|:---:|---|
+|Paramter 누락|400|MISSING_PARAMETER|'{paramterName}' is required |
+|Paramter 포맷 오류|400|INVALID_PARAMETER|'{paramterName}' is invalid parameter|
+|Paramter 범위 오류|400|OUT_OF_RANGE|'{parameterName} is out of range \[ {min},{max} \]'|
+|URI 존재하지 않음 |404|NOT_FOUND|'{requestUri}' is not found|
+|서버 오류|500|INTERNAL_SERVER_ERROR|An unknown error has occurred. Please try again in a little while.|
