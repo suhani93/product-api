@@ -23,6 +23,14 @@
 - DB 형상 관리를 위하여 flyway를 사용
 
 
+## 실행 방법
+1. Docker 실행 
+```shell
+docker-compose up -d
+```
+
+
+
 ## 개발 히스토리
 
 ---
@@ -31,27 +39,27 @@
 
 **정상 응답값**
 - 응답값을 확장 가능한 구조로 설계
-```
+```json
 {
-	code : "",
-	data : { }
+	"code" : "",
+	"data" : { }
 }
 ```
-`code` 응답 성공 결과에 대한 코드값 API 문서 참고
+`code` 응답 성공 결과에 대한 코드값 API 문서 참고  
 `data` 요청에 대한 결과
 
 **에러 응답값**
 - 에러에 대해서 버그 리포트가 가능한 구조로 설계
-```
+```json
 {
-	code : "",
-	message : "",
-	transactionId : ""
+	"code" : "",
+	"message" : "",
+	"transactionId" : ""
 }
 ```
-`code` 는 해당 에러의 유형을 알려주는 코드 값으로 API 문서 참조
-`message` 는 해당 에러에 대한 메세지
-`transactionId` 는 해당 응답값이 실패한 이유를 추적하기 위한 각각의 요청마다 가지고 있는 UUID
+`code` 는 해당 에러의 유형을 알려주는 코드 값으로 API 문서 참조  
+`message` 는 해당 에러에 대한 메세지  
+`transactionId` 는 해당 응답값이 실패한 이유를 추적하기 위한 각각의 요청마다 가지고 있는 UUID  
 
 ---
 

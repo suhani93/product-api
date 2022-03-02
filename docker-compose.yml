@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  mariaDB:
+    container_name: product-api-db
+    image: mariadb:latest
+    ports:
+      - 3306:3306
+    volumes:
+#      - ${PWD}/database:/var/lib/mariadb
+      - /var/lib/mariadb
+    networks:
+      - docker
+    restart: always
+    environment:
+      - MARIADB_DATABASE=product-db
+      - MARIADB_ROOT_PASSWORD=root1234
+      - MARIADB_USER=product-db
+      - MARIADB_PASSWORD=product-db1234
+      - TZ=Asia/Seoul
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+
+networks:
+  docker:
