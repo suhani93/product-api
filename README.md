@@ -80,3 +80,20 @@ docker-compose up -d
 |Paramter 범위 오류|400|OUT_OF_RANGE|'{parameterName} is out of range \[ {min},{max} \]'|
 |URI 존재하지 않음 |404|NOT_FOUND|'{requestUri}' is not found|
 |서버 오류|500|INTERNAL_SERVER_ERROR|An unknown error has occurred. Please try again in a little while.|
+
+
+### DTO 관련 규칙
+
+**네이밍 규칙**
+- `client`에서 `controller`로 요청을 한 값을 담아주기 위한 객체 : XxxxRequest
+- `controller`에서 `client`로 응답을 해주기 위한 객체 - XxxxResponse
+- `Service` 내에서 로직을 위해 데이터를 전달해주는 객체 - XxxxDto
+- `Repository` 에서 `service`로 데이터를 전달해주는 객체 - XxxxDto  
+
+> ※ DTO에는 Getter 외의 어떠한 로직도 들어가지 않으며 불변객체로 만든다.  
+
+
+
+
+
+
