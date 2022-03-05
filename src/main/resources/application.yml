@@ -12,6 +12,11 @@ spring:
     hibernate:
       ddl-auto: validate
     show-sql: true
+  mvc:
+    format:
+      date: yyyy-MM-dd
+      date-time: yyyy-MM-dd HH:mm:ss
+      time: HH:mm:ss
 
 logging:
   pattern:
