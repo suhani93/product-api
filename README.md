@@ -75,11 +75,10 @@ docker-compose up -d
 
 |상황|Status Code|Response Body `code`|Response Body `message`|
 |---|:---:|:---:|---|
-|Paramter 누락|400|MISSING_PARAMETER|'{paramterName}' is required |
-|Paramter 포맷 오류|400|INVALID_PARAMETER|'{paramterName}' is invalid parameter|
-|Paramter 범위 오류|400|OUT_OF_RANGE|'{parameterName} is out of range \[ {min},{max} \]'|
-|URI 존재하지 않음 |404|NOT_FOUND|'{requestUri}' is not found|
-|서버 오류|500|INTERNAL_SERVER_ERROR|An unknown error has occurred. Please try again in a little while.|
+|Paramter 누락|400|MISSING_PARAMETER|'${paramterName}' is required |
+|잘못된 Paramter 요청|400|INVALID_PARAMETER|'${paramterName}' ${validationErrorMessage} |
+|URI 존재하지 않음 |404|NOT_FOUND|'${requestUri}' is not found|
+|서버 오류|500|INTERNAL_SERVER_ERROR|An unknown error has occurred. Please try again in a little while|
 
 
 ### DTO 관련 규칙
