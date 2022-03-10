@@ -7,9 +7,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.servlet.NoHandlerFoundException;
@@ -23,8 +25,9 @@ import java.util.Map;
 @Slf4j
 public class CommonRestControllerAdvice {
 
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     @ExceptionHandler(value = {Exception.class})
-    public ResponseEntity<?> exception(Exception e) {
+    public ResponseErrorData exception(Exception e) {
         log.error("{}", e);
 
         ResponseErrorData result = ResponseErrorData.builder()
@@ -32,7 +35,7 @@ public class CommonRestControllerAdvice {
                 .message(CommonErrorCode.INTERNAL_SERVER_ERROR.getMessage())
                 .build();
 
-        return new ResponseEntity<>(result, HttpStatus.INTERNAL_SERVER_ERROR);
+        return result;
     }
 
 
@@ -41,8 +44,9 @@ public class CommonRestControllerAdvice {
      * @param e
      * @return
      */
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(value = NoHandlerFoundException.class)
-    public ResponseEntity<?> NoHandlerFoundException(NoHandlerFoundException e) {
+    public ResponseErrorData noHandlerFoundException(NoHandlerFoundException e) {
         log.error("{}", e);
 
         CommonErrorCode notFoundError = CommonErrorCode.NOT_FOUND;
@@ -57,7 +61,7 @@ public class CommonRestControllerAdvice {
                 .message(message)
                 .build();
 
-        return new ResponseEntity<>(result, HttpStatus.NOT_FOUND);
+        return result;
     }
 
     /**
@@ -66,8 +70,9 @@ public class CommonRestControllerAdvice {
      * @param e
      * @return
      */
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(value = MissingServletRequestParameterException.class)
-    public ResponseEntity MissingServletRequestParameterException(MissingServletRequestParameterException e) {
+    public ResponseErrorData missingServletRequestParameterException(MissingServletRequestParameterException e) {
         log.error("{}", e);
 
 
@@ -82,7 +87,7 @@ public class CommonRestControllerAdvice {
                 .message(message)
                 .build();
 
-        return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
+        return result;
     }
 
 
@@ -92,8 +97,9 @@ public class CommonRestControllerAdvice {
      * @param e
      * @return
      */
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<?> methodArgumentNotValidException(MethodArgumentNotValidException e) {
+    public ResponseErrorData methodArgumentNotValidException(MethodArgumentNotValidException e) {
         log.error("{}", e);
 
         ObjectError objectError = e.getBindingResult().getAllErrors().get(0);
@@ -112,7 +118,6 @@ public class CommonRestControllerAdvice {
                 .message(message)
                 .build();
 
-        return new ResponseEntity<>(result, HttpStatus.BAD_REQUEST);
+        return result;
     }
-
 }
