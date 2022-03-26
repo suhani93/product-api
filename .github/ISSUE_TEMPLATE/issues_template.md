@@ -1,9 +1,14 @@
-# 이슈 내용
-> 이슈 내용을 입력
+---
+name: ISSUES_TEMPLATE
+about: 이슈 템플릿
+title: ''
+labels: ''
+assignees: ''
 
-# 할 일
-- [ ] TODO 1
+---
 
+# 이슈 내역
+> 
 
-
-
+# TODO
+- [ ] todo1
