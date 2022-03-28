@@ -22,5 +22,14 @@ services:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci
 
+  redis:
+    container_name: product-api-redis
+    image: redis:latest
+    restart: always
+    hostname: product-api-redis
+    ports:
+      - 6379:6379
+    command: redis-server
+
 networks:
   docker:
