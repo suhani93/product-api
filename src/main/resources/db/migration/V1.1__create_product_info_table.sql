@@ -1,0 +1,20 @@
+CREATE TABLE t_product_info(
+    id BIGINT NOT NULL UNIQUE AUTO_INCREMENT COMMENT '상품 정보 PK',
+    category_id BIGINT NOT NULL COMMENT '카테고리 FK',
+    seller_id BIGINT COMMENT '판매자 PK',
+    name VARCHAR(300) COMMENT '상품 명',
+    image_url VARCHAR(255) COMMENT '상품 이미지 URL',
+    description LONGTEXT COMMENT '상품 설명',
+    brand VARCHAR(300) COMMENT '브랜드 명',
+    manufacturer VARCHAR(300) COMMENT '제조사',
+    price DECIMAL COMMENT '가격',
+    is_deleted BOOLEAN COMMENT '삭제 여부',
+    created_at DATETIME(6) COMMENT '등록일',
+    updated_at DATETIME(6) COMMENT '수정일',
+    deleted_at DATETIME(6) COMMENT '삭제일',
+    created_by VARCHAR(255) COMMENT '등록자',
+    updated_by VARCHAR(255) COMMENT '수정자',
+    deleted_by VARCHAR(255) COMMENT '삭제자',
+    PRIMARY KEY(id),
+    FOREIGN KEY (category_id) REFERENCES t_category_info(id)
+) ;
