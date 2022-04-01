@@ -22,8 +22,12 @@ spring:
   web:
     resources:
       add-mappings: false
-
+  redis:
+    port: 6379
+    host: localhost
 
 logging:
   pattern:
     console: "%d{YYYY-MM-DD HH:mm:ss.SSS} [%X{transactionId}] [%t] %-5level %logger{36} - %msg%n"
+
+
