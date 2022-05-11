@@ -8,7 +8,7 @@ public enum CommonErrorCode {
     INTERNAL_SERVER_ERROR("INTERNAL_SERVER_ERROR","An unknown error has occurred. Please try again in a little while"),
     MISSING_PARAMETER("MISSING_PARAMETER","'${paramterName}' is required"),
     INVALID_PARAMETER("INVALID_PARAMETER","'${paramterName}' ${validationErrorMessage}"),
-    NOT_FOUND("NOT_FOUND","'${requestUri}' is not found");
+    NOT_FOUND("NOT_FOUND","resource doesn't exist");
 
     private String code;
     private String message;

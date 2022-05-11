@@ -77,7 +77,7 @@ docker-compose up -d
 |---|:---:|:---:|---|
 |Paramter 누락|400|MISSING_PARAMETER|'${paramterName}' is required |
 |잘못된 Paramter 요청|400|INVALID_PARAMETER|'${paramterName}' ${validationErrorMessage} |
-|URI 존재하지 않음 |404|NOT_FOUND|'${requestUri}' is not found|
+|리소스가 존재하지 않음 |404|NOT_FOUND|resource doesn't exist|
 |서버 오류|500|INTERNAL_SERVER_ERROR|An unknown error has occurred. Please try again in a little while|
 
 
