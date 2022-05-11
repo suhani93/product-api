@@ -1,5 +1,6 @@
 package project.demo.product.product.entity;
 
+import lombok.Getter;
 import project.demo.product.category.entity.CategoryInfo;
 import project.demo.product.common.entity.BaseEntity;
 
@@ -8,6 +9,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "t_product_info")
+@Getter
 public class ProductInfo extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,5 +27,7 @@ public class ProductInfo extends BaseEntity {
     private String brand;
     private String manufacturer;
     private BigDecimal price;
-    private boolean isDeleted;
+
+    @Column(name = "is_deleted")
+    private boolean deleted;
 }
