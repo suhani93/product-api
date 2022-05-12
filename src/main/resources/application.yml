@@ -12,6 +12,9 @@ spring:
     hibernate:
       ddl-auto: validate
     show-sql: true
+    properties:
+      hibernate:
+        default_batch_fetch_size: 100
   mvc:
     format:
       date: yyyy-MM-dd
