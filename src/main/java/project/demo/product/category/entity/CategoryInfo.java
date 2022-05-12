@@ -1,22 +1,28 @@
 package project.demo.product.category.entity;
 
+import lombok.Getter;
+import project.demo.product.common.converter.BooleanConverter;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "t_category_info")
+@Getter
 public class CategoryInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name ="parent_id")
-    private CategoryInfo parent;
+    private Long parentId;
 
-    @OneToMany (mappedBy = "parent")
-    private List<CategoryInfo> subCategory = new ArrayList<>();
+    private int orderNumber;
+
+    @Column(name = "is_deleted")
+    @Convert(converter = BooleanConverter.class)
+    private boolean deleted;
 
 }
